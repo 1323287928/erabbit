@@ -1,12 +1,18 @@
 import { createStore } from 'vuex'
+import cart from './modules/cart'
+import user from './modules/user'
+import category from './modules/category'
+import createPersistedState from 'vuex-persistedstate'
 export default createStore({
-  state: {
+  modules: {
+    cart,
+    user,
+    category
   },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {}
+  plugins: [
+    createPersistedState({
+      key: 'erabbit-client-pc-124-store',
+      paths: ['user', 'cart']
+    })
+  ]
 })
